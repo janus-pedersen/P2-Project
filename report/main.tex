@@ -1,0 +1,48 @@
+\input{setup/preamble.tex}% package inclusion and set up of the document
+\input{setup/hyphenations.tex}% 
+\input{setup/macros.tex}% my new macros
+
+\begin{document}
+% --- Front Page ---
+\pagestyle{empty} %disable headers and footers
+\pagenumbering{gobble}
+% \input{content/colophon.tex}
+\input{content/titlepages.tex}
+\input{content/frontpageImage.tex}
+
+\pagenumbering{roman}
+\cleardoublepage
+\pdfbookmark{Contents}{label:contents}
+% Remove the chapter numbers
+\renewcommand{\thesection}{\arabic{section}} 
+\tableofcontents
+\newpage
+\pagestyle{fancy} %enable headers and footers again
+\listoffigures
+\listoftables
+
+\newpage
+\pagenumbering{arabic}
+
+% --- Indsæt content filer her ---
+\input{rapport/content/sections/introduction}
+
+\input{rapport/content/sections/methodology}
+\input{rapport/content/sections/state-of-the-art}
+
+\input{rapport/content/sections/design}
+\input{rapport/content/sections/implementation}
+
+\input{rapport/content/sections/testing}
+\input{rapport/content/sections/discussion}
+\input{rapport/content/sections/conclusion}
+% --- Ikke flere content filer efter her ---
+
+\cleardoublepage
+
+\addcontentsline{toc}{section}{Bibliography}
+\printbibliography
+% \label{bib:mybiblio}
+\input{rapport/content/sections/appendix}
+
+\end{document}
